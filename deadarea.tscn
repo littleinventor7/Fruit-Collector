@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://x26wvdgugnre"]
+
+[ext_resource type="Script" uid="uid://bumo21sh66sgi" path="res://deadarea.gd" id="1_jfjly"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2oxyg"]
+a = Vector2(-10970, -11)
+b = Vector2(12168, -46)
+
+[node name="Deadarea" type="Area2D"]
+script = ExtResource("1_jfjly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_2oxyg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

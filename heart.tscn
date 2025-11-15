@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://cadydvrnweuiu"]
+
+[ext_resource type="Script" uid="uid://dp47yi53ll27v" path="res://heart.gd" id="1_7p8dj"]
+[ext_resource type="Texture2D" uid="uid://ctasknvt6n3p4" path="res://spritesheet-tiles-default.png" id="1_cixvg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cixvg"]
+radius = 15.297058
+
+[sub_resource type="Animation" id="Animation_7p8dj"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_pembh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjxl8"]
+_data = {
+&"RESET": SubResource("Animation_pembh"),
+&"move": SubResource("Animation_7p8dj")
+}
+
+[node name="heart" type="Area2D"]
+script = ExtResource("1_7p8dj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cixvg")
+region_enabled = true
+region_rect = Rect2(832, 1088, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_cixvg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bjxl8")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

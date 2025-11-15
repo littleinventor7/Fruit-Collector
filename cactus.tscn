@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvwkjulotoxx7"]
+
+[ext_resource type="Script" uid="uid://70bujq7j5e3m" path="res://greengrass.gd" id="1_v3bmc"]
+[ext_resource type="Texture2D" uid="uid://ctasknvt6n3p4" path="res://spritesheet-tiles-default.png" id="2_l2xdd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3bmc"]
+height = 52.0
+
+[node name="cactus" type="Area2D"]
+script = ExtResource("1_v3bmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_l2xdd")
+region_enabled = true
+region_rect = Rect2(960, 768, 64, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.95, 0.95)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, -2.1052632)
+scale = Vector2(1.0526316, 1.0526316)
+polygon = PackedVector2Array(-1, -33, -6, -31, -13, -26, -16, -19, -16, -10, -24, -10, -29, -7, -31, 3, -29, 16, -27, 19, -18, 25, -12, 29, -12, 32, 12, 32, 12, 28, 12, 23, 12, 20, 15, 19, 20, 16, 25, 12, 29, 5, 31, -1, 31, -9, 31, -12, 28, -18, 23, -19, 20, -19, 15, -18, 13, -25, 9, -29, 5, -31)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(22.105265, 6.3157897)
+scale = Vector2(1.0526316, 1.0526316)
+shape = SubResource("CapsuleShape2D_v3bmc")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.02, 1.02)
+polygon = PackedVector2Array(-1, -33, -6, -31, -13, -26, -16, -19, -16, -10, -24, -10, -29, -7, -31, 3, -29, 16, -27, 19, -18, 25, -12, 29, -12, 32, 12, 32, 12, 28, 12, 23, 12, 20, 15, 19, 20, 16, 25, 12, 29, 5, 31, -1, 31, -9, 31, -12, 28, -18, 23, -19, 20, -19, 15, -18, 13, -25, 9, -29, 5, -31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21, 8)
+shape = SubResource("CapsuleShape2D_v3bmc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

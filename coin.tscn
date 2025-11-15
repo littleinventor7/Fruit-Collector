@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhhfpnv482mpc"]
+
+[ext_resource type="Script" uid="uid://bv7cilblm6r4" path="res://coin.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://ctasknvt6n3p4" path="res://spritesheet-tiles-default.png" id="1_d5gmh"]
+
+[sub_resource type="Animation" id="Animation_0t63x"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25)]
+}
+
+[sub_resource type="Animation" id="Animation_v7riw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdq0q"]
+_data = {
+&"RESET": SubResource("Animation_v7riw"),
+&"move": SubResource("Animation_0t63x")
+}
+
+[node name="coin" type="Area2D"]
+script = ExtResource("1_0t63x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d5gmh")
+region_enabled = true
+region_rect = Rect2(960, 512, 64, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -10, 0, -19, -17, -8, -17, 9, -4, 18, 3, 18, 15, 10, 15, -9, 0, -19, 0, -18)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pdq0q")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7ylpty5he1jj"]
+
+[ext_resource type="Script" uid="uid://7k47a1ma2t7v" path="res://fireball.gd" id="1_olwj8"]
+[ext_resource type="Texture2D" uid="uid://ctasknvt6n3p4" path="res://spritesheet-tiles-default.png" id="1_sf4mh"]
+
+[sub_resource type="Animation" id="Animation_olwj8"]
+resource_name = "move"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_wdani"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nix7o"]
+_data = {
+&"RESET": SubResource("Animation_wdani"),
+&"move": SubResource("Animation_olwj8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4vqi"]
+radius = 17.0
+
+[node name="fireball" type="Area2D"]
+script = ExtResource("1_olwj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sf4mh")
+region_enabled = true
+region_rect = Rect2(896, 960, 64, 64)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+libraries = {
+&"": SubResource("AnimationLibrary_nix7o")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m4vqi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
