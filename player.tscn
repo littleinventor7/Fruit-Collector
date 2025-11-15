@@ -1,0 +1,265 @@
+[gd_scene load_steps=17 format=3 uid="uid://bpuqstmbufx56"]
+
+[ext_resource type="Script" uid="uid://dfrgnm56itgd6" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://ey7uahcok42g" path="res://spritesheet-characters-default.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://ofefpw6h2wxk" path="res://health2.png" id="3_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
+radius = 35.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hs0m"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jxqw"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(512, 0, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_2hs0m"]
+resource_name = "damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(384, 896, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(384, 640, 128, 128), Rect2(384, 768, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+resource_name = "move"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(384, 512, 128, 128), Rect2(384, 384, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+resource_name = "stand"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(512, 0, 128, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqtel"]
+_data = {
+&"RESET": SubResource("Animation_i3pqv"),
+&"damage": SubResource("Animation_2hs0m"),
+&"jump": SubResource("Animation_sweqy"),
+&"move": SubResource("Animation_onrkg"),
+&"stand": SubResource("Animation_hqtel")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.43137255)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.74509805)
+shadow_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3pqv"]
+font_size = 100
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqtel"]
+font_size = 100
+font_color = Color(0.1484375, 1, 0, 1)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i3pqv")
+region_enabled = true
+region_rect = Rect2(512, 0, 128, 128)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_hqtel")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(12, 45)
+shape = SubResource("CapsuleShape2D_sweqy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(-12, 45)
+shape = SubResource("CapsuleShape2D_sweqy")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(-20, 35)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_2hs0m")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(20.000004, 35)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_2hs0m")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(0, 36)
+shape = SubResource("CircleShape2D_1jxqw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hqtel")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="health" type="CanvasLayer" parent="UI"]
+
+[node name="healthsprite" type="Sprite2D" parent="UI/health"]
+position = Vector2(981, 75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_i3pqv")
+vframes = 4
+
+[node name="score" type="CanvasLayer" parent="UI"]
+
+[node name="dieing" type="CanvasLayer" parent="UI"]
+process_mode = 3
+visible = false
+
+[node name="Panel" type="Panel" parent="UI/dieing"]
+offset_left = 10.0
+offset_top = 18.0
+offset_right = 1139.0
+offset_bottom = 632.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i3pqv")
+
+[node name="Label" type="Label" parent="UI/dieing"]
+offset_left = 355.0
+offset_top = 71.0
+offset_right = 786.0
+offset_bottom = 348.0
+text = "You Died
+"
+label_settings = SubResource("LabelSettings_i3pqv")
+
+[node name="playagain" type="Button" parent="UI/dieing"]
+process_mode = 3
+offset_left = 511.0
+offset_top = 342.0
+offset_right = 668.0
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 30
+text = "Play Again"
+
+[node name="Button2" type="Button" parent="UI/dieing"]
+process_mode = 3
+offset_left = 513.0
+offset_top = 436.0
+offset_right = 670.0
+offset_bottom = 486.0
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+
+[node name="win" type="CanvasLayer" parent="UI"]
+process_mode = 3
+visible = false
+
+[node name="Panel" type="Panel" parent="UI/win"]
+offset_left = 10.0
+offset_top = 18.0
+offset_right = 1139.0
+offset_bottom = 632.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i3pqv")
+
+[node name="Label" type="Label" parent="UI/win"]
+offset_left = 378.0
+offset_top = 72.0
+offset_right = 809.0
+offset_bottom = 349.0
+text = "You Win
+"
+label_settings = SubResource("LabelSettings_hqtel")
+
+[node name="playagain" type="Button" parent="UI/win"]
+process_mode = 3
+offset_left = 511.0
+offset_top = 342.0
+offset_right = 668.0
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 30
+text = "Play Again"
+
+[node name="Button2" type="Button" parent="UI/win"]
+process_mode = 3
+offset_left = 513.0
+offset_top = 436.0
+offset_right = 670.0
+offset_bottom = 486.0
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+
+[connection signal="pressed" from="UI/dieing/playagain" to="." method="_on_playagain_pressed"]
+[connection signal="pressed" from="UI/dieing/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/win/playagain" to="." method="_on_playagain_pressed"]
+[connection signal="pressed" from="UI/win/Button2" to="." method="_on_button_2_pressed"]

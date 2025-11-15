@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://des5grbgdol7c"]
+
+[ext_resource type="Script" uid="uid://chp46a3hsnrmv" path="res://redslim.gd" id="1_wgoie"]
+[ext_resource type="Texture2D" uid="uid://d1kyocb632aah" path="res://spritesheet-enemies-default.png" id="2_avepf"]
+[ext_resource type="Script" uid="uid://bb1el1e0vmnmh" path="res://fireball_spawner.gd" id="3_avepf"]
+[ext_resource type="PackedScene" uid="uid://c7ylpty5he1jj" path="res://fireball.tscn" id="4_qcu4k"]
+
+[sub_resource type="Animation" id="Animation_5idr2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(128, 384, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_s3dy2"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(128, 384, 64, 64), Rect2(128, 320, 64, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_508dp"]
+_data = {
+&"RESET": SubResource("Animation_5idr2"),
+&"move": SubResource("Animation_s3dy2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qcu4k"]
+radius = 192.04427
+
+[node name="redslim" type="CharacterBody2D" groups=["redslim"]]
+script = ExtResource("1_wgoie")
+fireball_scene = ExtResource("4_qcu4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_avepf")
+region_enabled = true
+region_rect = Rect2(128, 384, 64, 64)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_508dp")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 15)
+target_position = Vector2(1, 126)
+
+[node name="kill" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="kill"]
+polygon = PackedVector2Array(0, 32, -19, 32, -22, 30, -26, 26, -28, 20, -28, 15, -27, 10, -25, 5, -22, 1, -20, -2, -18, -6, -17, -11, -14, -13, -10, -17, -4, -20, 2, -21, 7, -20, 10, -19, 17, -20, 23, -19, 28, -14, 28, -8, 23, -2, 24, 2, 28, 11, 28, 20, 26, 28, 21, 31)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 32, -19, 32, -22, 30, -26, 26, -28, 20, -28, 15, -27, 10, -25, 5, -22, 1, -20, -2, -18, -6, -17, -11, -14, -13, -10, -17, -4, -20, 2, -21, 7, -20, 10, -19, 17, -20, 23, -19, 28, -14, 28, -8, 23, -2, 24, 2, 28, 11, 28, 20, 26, 28, 21, 31)
+
+[node name="Fireball Spawner" type="Node2D" parent="."]
+script = ExtResource("3_avepf")
+fireball_scene = ExtResource("4_qcu4k")
+
+[node name="SpawnTimer" type="Timer" parent="Fireball Spawner"]
+
+[node name="FirePoint" type="Marker2D" parent="."]
+position = Vector2(3, 13)
+
+[node name="fireright" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fireright"]
+position = Vector2(189, 4)
+shape = SubResource("CircleShape2D_qcu4k")
+
+[node name="fireright2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="fireright2"]
+position = Vector2(-187, 1)
+shape = SubResource("CircleShape2D_qcu4k")
+
+[connection signal="body_entered" from="kill" to="." method="_on_kill_body_entered"]
+[connection signal="timeout" from="Fireball Spawner/SpawnTimer" to="Fireball Spawner" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="fireright" to="." method="_on_fireright_body_entered"]
+[connection signal="body_entered" from="fireright" to="Fireball Spawner" method="_on_fire_body_entered"]
+[connection signal="body_exited" from="fireright" to="Fireball Spawner" method="_on_fire_body_exited"]
+[connection signal="body_entered" from="fireright2" to="." method="_on_fireright_2_body_entered"]
+[connection signal="body_entered" from="fireright2" to="Fireball Spawner" method="_on_fire_body_entered"]
+[connection signal="body_exited" from="fireright2" to="Fireball Spawner" method="_on_fire_body_exited"]
