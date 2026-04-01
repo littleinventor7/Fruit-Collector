@@ -2,6 +2,7 @@ extends Area2D
 var score
 var d = -1
 var s= 0
+var is_pulled = false
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var score_numer_label: Label = $"UI/score label/score numer label"
@@ -28,17 +29,17 @@ func _process(delta):
 		if global_position.distance_to(basket_world_pos) < 10:
 			queue_free()
 	elif Global.is_magenting and target_nodem:
-		magnett()
-		var screen_pos = target_nodem.get_global_transform_with_canvas().origin
-		var player_world_pos = get_viewport().get_canvas_transform().affine_inverse() * screen_pos
-		
-		global_position = global_position.lerp(player_world_pos, speed * delta)
+		if is_pulled:
+			magnett()
+			var screen_pos = target_nodem.get_global_transform_with_canvas().origin
+			var player_world_pos = get_viewport().get_canvas_transform().affine_inverse() * screen_pos
+			print("jgjg")
+			global_position = global_position.lerp(player_world_pos, speed * delta)
 		
 		#scale = scale.lerp(Vector2(0.1, 0.1), speed * delta)
-		if global_position.distance_to(player_world_pos) < 10:
-			start_collecting()
-		#await get_tree().create_timer(5).timeout
-		#Global.is_magenting = false
+			if global_position.distance_to(player_world_pos) < 10:
+				start_collecting()
+		
 
 func _on_body_entered(body):
 	if body.is_in_group("player") and not is_collecting:

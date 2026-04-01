@@ -206,7 +206,7 @@ _data = {
 &"move": SubResource("Animation_n78qv")
 }
 
-[node name="Apple" type="Area2D" unique_id=897367220]
+[node name="Apple" type="Area2D" unique_id=897367220 groups=["fruits"]]
 script = ExtResource("1_n78qv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1001496539]
