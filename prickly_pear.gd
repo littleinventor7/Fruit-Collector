@@ -28,7 +28,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("player") and not is_collecting:
 		Global.fruits -= 1
-		Global.num_banana +=1
+		Global.num_prickly_pear +=1
 		audio.play()
 		start_collecting()
 

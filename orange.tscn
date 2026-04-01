@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6dpe4dl5pik7"]
+[gd_scene format=3 uid="uid://b6dpe4dl5pik7"]
 
 [ext_resource type="Script" uid="uid://jbkoh2giy2tk" path="res://orange.gd" id="1_aoevm"]
 [ext_resource type="Texture2D" uid="uid://shnfwbob1vtv" path="res://photo_2025-11-05_20-07-50-removebg-preview.png" id="1_vnrxy"]
+[ext_resource type="AudioStream" uid="uid://cn4vtvusk72ag" path="res://liecio-collect-points-190037.mp3" id="3_wskhw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wskhw"]
 radius = 29.068884
@@ -70,33 +71,34 @@ _data = {
 &"move": SubResource("Animation_6mxjk")
 }
 
-[node name="orange" type="CharacterBody2D" groups=["fruits"]]
+[node name="orange" type="CharacterBody2D" unique_id=988458881 groups=["fruits"]]
 script = ExtResource("1_aoevm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1486926985]
 texture = ExtResource("1_vnrxy")
 region_enabled = true
 region_rect = Rect2(340, 340, 60, 60)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1963501396]
 position = Vector2(-2, 2)
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_wskhw")
 
-[node name="Orange" type="Area2D" parent="."]
+[node name="Orange" type="Area2D" parent="." unique_id=427194390]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Orange"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Orange" unique_id=360610675]
 position = Vector2(-2, 1)
 shape = SubResource("CircleShape2D_aoevm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=107261093]
 root_node = NodePath("../Orange")
-libraries = {
-&"": SubResource("AnimationLibrary_qq0pl")
-}
+libraries/ = SubResource("AnimationLibrary_qq0pl")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=362341565]
 position = Vector2(-2, 2)
 target_position = Vector2(-1, 546)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=270798066]
+stream = ExtResource("3_wskhw")
 
 [connection signal="body_entered" from="Orange" to="." method="_on_orange_body_entered"]

@@ -30,6 +30,8 @@ func _ready() -> void:
 	else :
 		health = 3 
 func _physics_process(delta: float) -> void:
+	Global.p_x = player.position.x
+	Global.p_y = player.position.y
 	if Global.level == 18:
 		winn()
 	Global.health = health
@@ -57,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 func move(): 
 	if Input.is_action_pressed("right") and isdamage == 0:
-		#Golbal.p_x = sprite.position.x
+		
 #		$Particles.emitting = true
 		sprite.flip_h = false
 		velocity.x = 300

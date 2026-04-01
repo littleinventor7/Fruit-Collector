@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq2anawx333is"]
+[gd_scene format=3 uid="uid://bq2anawx333is"]
 
-[ext_resource type="Script" uid="uid://dr5wifhdf1jlm" path="res://apple.gd" id="1_7dgt4"]
+[ext_resource type="Script" uid="uid://bo14vkb1dsmxl" path="res://prickly_pear.gd" id="1_l3gal"]
 [ext_resource type="Texture2D" uid="uid://lrk3wtwjxqtr" path="res://Generated_Image_November_14__2025_-_1_17AM-removebg-preview.png" id="2_l3gal"]
+[ext_resource type="AudioStream" uid="uid://cn4vtvusk72ag" path="res://liecio-collect-points-190037.mp3" id="3_p1b4q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1b4q"]
 radius = 28.0
@@ -81,21 +82,22 @@ _data = {
 &"move": SubResource("Animation_aoevm")
 }
 
-[node name="Prickly Pear" type="Area2D"]
-script = ExtResource("1_7dgt4")
+[node name="Prickly Pear" type="Area2D" unique_id=2134535527]
+script = ExtResource("1_l3gal")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=223761737]
 texture = ExtResource("2_l3gal")
 region_enabled = true
 region_rect = Rect2(256, 0, 128, 128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490151354]
 position = Vector2(-4, 10)
 shape = SubResource("CapsuleShape2D_p1b4q")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6mxjk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1776907513]
+libraries/ = SubResource("AnimationLibrary_6mxjk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=409967325]
+stream = ExtResource("3_p1b4q")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

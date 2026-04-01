@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://vkxlq43ij5nl"]
+[gd_scene format=3 uid="uid://vkxlq43ij5nl"]
 
 [ext_resource type="Script" uid="uid://dr5wifhdf1jlm" path="res://apple.gd" id="1_n78qv"]
 [ext_resource type="Texture2D" uid="uid://shnfwbob1vtv" path="res://photo_2025-11-05_20-07-50-removebg-preview.png" id="2_whgpf"]
+[ext_resource type="AudioStream" uid="uid://cn4vtvusk72ag" path="res://liecio-collect-points-190037.mp3" id="3_whgpf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aoevm"]
 radius = 32.01562
@@ -18,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(17, -18)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -42,7 +43,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.0009999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Rect2(256, 0, 128, 128), Rect2(20, 260, 60, 80)]
+"values": [Rect2(64, 0, 128, 128), Rect2(20, 260, 60, 80)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_aoevm"]
@@ -59,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20)]
+"values": [Vector2(16, -19), Vector2(16, -30)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -71,13 +84,80 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(-4, -2),
 "update": 0,
-"values": [Vector2(-4, 10), Vector2(-4, -10)]
+"values": [Vector2(-4, 10), Vector2(-4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xniv1"]
+resource_name = "move2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, -19), Vector2(-840, -499)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6mxjk"]
 _data = {
 &"RESET": SubResource("Animation_wskhw"),
-&"move": SubResource("Animation_aoevm")
+&"move": SubResource("Animation_aoevm"),
+&"move2": SubResource("Animation_xniv1")
+}
+
+[sub_resource type="Animation" id="Animation_whgpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(55, 35, 115, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, 10)]
 }
 
 [sub_resource type="Animation" id="Animation_n78qv"]
@@ -120,71 +200,32 @@ tracks/2/keys = {
 "values": [Vector2(-4, 10), Vector2(-4, -10)]
 }
 
-[sub_resource type="Animation" id="Animation_whgpf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(55, 35, 115, 100)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-4, 10)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xniv1"]
 _data = {
 &"RESET": SubResource("Animation_whgpf"),
 &"move": SubResource("Animation_n78qv")
 }
 
-[node name="Apple" type="Area2D"]
+[node name="Apple" type="Area2D" unique_id=897367220]
 script = ExtResource("1_n78qv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1001496539]
 texture = ExtResource("2_whgpf")
 region_enabled = true
 region_rect = Rect2(55, 35, 115, 100)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13943886]
+visible = false
 position = Vector2(-4, 10)
 shape = SubResource("CircleShape2D_aoevm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6mxjk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=750364822]
+libraries/ = SubResource("AnimationLibrary_6mxjk")
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xniv1")
-}
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=2068735614]
+libraries/ = SubResource("AnimationLibrary_xniv1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=976152752]
+stream = ExtResource("3_whgpf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

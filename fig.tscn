@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccovmojxoye7n"]
+[gd_scene format=3 uid="uid://ccovmojxoye7n"]
 
-[ext_resource type="Script" uid="uid://dr5wifhdf1jlm" path="res://apple.gd" id="1_33qh8"]
+[ext_resource type="Script" uid="uid://cirbiueaxhrov" path="res://fig.gd" id="1_mxg2q"]
 [ext_resource type="Texture2D" uid="uid://lrk3wtwjxqtr" path="res://Generated_Image_November_14__2025_-_1_17AM-removebg-preview.png" id="2_mxg2q"]
+[ext_resource type="AudioStream" uid="uid://cn4vtvusk72ag" path="res://liecio-collect-points-190037.mp3" id="3_hvq7s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aoevm"]
 radius = 32.01562
@@ -80,21 +81,22 @@ _data = {
 &"move": SubResource("Animation_aoevm")
 }
 
-[node name="Fig" type="Area2D"]
-script = ExtResource("1_33qh8")
+[node name="Fig" type="Area2D" unique_id=1448037431]
+script = ExtResource("1_mxg2q")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1517683003]
 texture = ExtResource("2_mxg2q")
 region_enabled = true
 region_rect = Rect2(256, 128, 128, 128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1405718401]
 position = Vector2(-5, 9)
 shape = SubResource("CircleShape2D_aoevm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6mxjk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1964714703]
+libraries/ = SubResource("AnimationLibrary_6mxjk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=757505636]
+stream = ExtResource("3_hvq7s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
