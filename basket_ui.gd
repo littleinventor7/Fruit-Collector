@@ -1,6 +1,7 @@
 extends CanvasLayer
+@onready var label_2: Label = $UI/Basket_UI/TileMap2/Sprite2D/Label2
 
-@onready var l_apple: Label = $TileMap2/Sprite2D/Label2
+@onready var l_apple: Label = %apple_num
 @onready var l_orange: Label = $TileMap2/Sprite2D3/Label2
 @onready var l_watermelon: Label = $TileMap2/Sprite2D6/Label2
 @onready var l_prickly_pear: Label = $TileMap2/Sprite2D7/Label2

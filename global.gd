@@ -14,5 +14,7 @@ var num_prickly_pear = 0
 var num_grapes = 0
 var basket_x = 0
 var basket_y = 0
+var num_magnets = 0
 var p_x =0 
 var p_y =0
+var is_magenting = false
