@@ -18,3 +18,5 @@ var num_magnets = 0
 var p_x =0 
 var p_y =0
 var is_magenting = false
+var is_sheild = false
+var num_sheild = 0

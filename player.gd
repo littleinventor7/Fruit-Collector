@@ -30,6 +30,24 @@ func _ready() -> void:
 	else :
 		health = 3 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("magenting")and Global.num_magnets >0:
+		if $UI/Shop_UI.visible == false and $UI/Basket_UI.visible == false:
+			if $UI/win.visible == false and $UI/dieing.visible == false:
+				Global.is_magenting =true
+				Global.num_magnets -= 1
+				print("gtt")
+		await get_tree().create_timer(10).timeout
+		Global.is_magenting = false
+	if Input.is_action_pressed("sheild")and Global.num_sheild >0:
+		if $UI/Shop_UI.visible == false and $UI/Basket_UI.visible == false:
+			if $UI/win.visible == false and $UI/dieing.visible == false:
+				$Shield_Area.visible =true
+				$Shield_Area/CollisionShape2D.disabled = false
+				Global.num_sheild -= 1
+				print("gtt") 
+		await get_tree().create_timer(40).timeout
+		$Shield_Area.visible = false
+		$Shield_Area/CollisionShape2D.disabled = true
 	Global.p_x = player.position.x
 	Global.p_y = player.position.y
 	if Global.level == 18:
@@ -146,3 +164,28 @@ func _on_button_2_pressed() -> void:
 func winn():
 	win.visible = true
 	get_tree().paused = true
+
+func _on_magnetic_area_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("fruits"):
+	if "is_pulled" in area:
+		area.is_pulled = true
+		print(area.is_pulled)
+	pass # Replace with function body.
+
+
+func _on_shield_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy") :
+		body.queue_free()
+	pass # Replace with function body.
+
+
+func _on_shield_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy") :
+		area.queue_free()
+	pass # Replace with function body.
+
+
+func _on_magnetic_area_area_exited(area: Area2D) -> void:
+	if "is_pulled" in area:
+		area.is_pulled = false
+	pass # Replace with function body.
