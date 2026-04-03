@@ -28,8 +28,8 @@ func _on_leftray_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
 func _on_leftray_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group("world"):
-		d *= -1
-	pass # Replace with function body.
+		#d *= -1
+		pass # Replace with function body.
 	if body.is_in_group("player") and attacked == 0:
 		d = 1
 		attack = 1
@@ -37,7 +37,8 @@ func _on_leftray_2_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
 func _on_rightray_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group("world"):
-		d *= -1
+		#d *= -1
+		pass
 	pass # Replace with function body.
 	if body.is_in_group("player") and attacked == 0:
 		d = -1
@@ -60,6 +61,8 @@ func _on_leftray_2_body_exited(body: Node2D) -> void:
 func _on_attakplayer_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.damage()
+	elif body.is_in_group("world"):
+		d*=-1
 	pass # Replace with function body.
 
 func _on_die_body_entered(body: Node2D) -> void:

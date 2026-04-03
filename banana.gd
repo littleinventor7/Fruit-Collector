@@ -17,6 +17,7 @@ var is_collecting = false
 var speed = 5.0   
 
 func _process(delta):
+	target_nodem = get_tree().root.find_child("player", true, false)
 	if is_collecting and target_nodeb:
 		var screen_pos = target_nodeb.get_global_transform_with_canvas().origin
 		var basket_world_pos = get_viewport().get_canvas_transform().affine_inverse() * screen_pos

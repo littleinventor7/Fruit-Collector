@@ -20,3 +20,5 @@ var p_y =0
 var is_magenting = false
 var is_sheild = false
 var num_sheild = 0
+var coins = 0
+var num_health =0

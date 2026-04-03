@@ -1,5 +1,5 @@
 extends Area2D
-
+var enemy_attack
 @export var speed_x = 350   
 @export var jump_force = -350
 @export var gravitغy = 600

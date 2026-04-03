@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bie6uhic1tp4m"]
+[gd_scene format=3 uid="uid://bie6uhic1tp4m"]
 
 [ext_resource type="Script" uid="uid://xo0xhtu7orfr" path="res://fly.gd" id="1_qarim"]
 [ext_resource type="Texture2D" uid="uid://d1kyocb632aah" path="res://spritesheet-enemies-default.png" id="2_7c42i"]
@@ -47,56 +47,54 @@ height = 42.0
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_qarim"]
 length = 313.0
 
-[node name="fly" type="Area2D"]
+[node name="fly" type="Area2D" unique_id=331001767 groups=["enemy"]]
 script = ExtResource("1_qarim")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=298732894]
 texture = ExtResource("2_7c42i")
 region_enabled = true
 region_rect = Rect2(320, 256, 64, 64)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_508dp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=386702997]
+libraries/ = SubResource("AnimationLibrary_508dp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=967335292]
 visible = false
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_mv3iy")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1714050040]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=530211705]
 polygon = PackedVector2Array(0, -24, -3, -27, -7, -29, -13, -29, -19, -27, -22, -24, -24, -19, -25, -14, -24, -10, -22, -7, -20, -5, -22, -1, -23, 3, -23, 7, -22, 11, -19, 16, -14, 19, -11, 20, -8, 25, -5, 28, -2, 29, 2, 30, 5, 27, 8, 26, 13, 26, 16, 23, 18, 20, 16, 16, 19, 12, 20, 7, 20, 1, 19, -4, 23, -8, 25, -13, 25, -18, 22, -23, 18, -27, 13, -29, 8, -29, 5, -28)
 
-[node name="attakplayer" type="Area2D" parent="."]
+[node name="attakplayer" type="Area2D" parent="." unique_id=640600176]
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="attakplayer"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="attakplayer" unique_id=2076791058]
 polygon = PackedVector2Array(0, -24, -3, -27, -7, -29, -13, -29, -19, -27, -22, -24, -24, -19, -25, -14, -24, -10, -22, -7, -20, -5, -22, -1, -23, 3, -23, 7, -22, 11, -19, 16, -14, 19, -11, 20, -8, 25, -5, 28, -2, 29, 2, 30, 5, 27, 8, 26, 13, 26, 16, 23, 18, 20, 16, 16, 19, 12, 20, 7, 20, 1, 19, -4, 23, -8, 25, -13, 25, -18, 22, -23, 18, -27, 13, -29, 8, -29, 5, -28)
 
-[node name="rightray" type="Area2D" parent="."]
+[node name="rightray" type="Area2D" parent="." unique_id=254329982]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rightray"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightray" unique_id=2069180543]
 rotation = 0.7853982
 shape = SubResource("SeparationRayShape2D_qarim")
 
-[node name="rightray2" type="Area2D" parent="."]
+[node name="rightray2" type="Area2D" parent="." unique_id=1494062996]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rightray2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightray2" unique_id=1399160421]
 rotation = 1.0471976
 shape = SubResource("SeparationRayShape2D_qarim")
 
-[node name="leftray" type="Area2D" parent="."]
+[node name="leftray" type="Area2D" parent="." unique_id=1480721616]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftray"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftray" unique_id=1912010133]
 rotation = -0.7853982
 shape = SubResource("SeparationRayShape2D_qarim")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="leftray2" type="Area2D" parent="."]
+[node name="leftray2" type="Area2D" parent="." unique_id=788500107]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftray2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftray2" unique_id=102290706]
 rotation = -1.0471976
 shape = SubResource("SeparationRayShape2D_qarim")
 debug_color = Color(1, 0, 0, 0.41960785)

@@ -96,7 +96,7 @@ shape = SubResource("CircleShape2D_aoevm")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=26998835]
 libraries/ = SubResource("AnimationLibrary_6mxjk")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=462897420]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=462897420 groups=["fruits"]]
 stream = ExtResource("3_dw53c")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
