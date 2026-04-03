@@ -17,8 +17,8 @@
 |-----|--------|
 | ⬅️ Left Arrow | Move left |
 | ➡️ Right Arrow | Move right |
-| ⬆️ Up Arrow | Move up |
-| ⬇️ Down Arrow | Move down |
+| ⬆️ Up Arrow | Jump |
+
 
 ### Objective
 Collect as many fruits as possible while avoiding enemies. Sell your collected fruits at the shop to earn coins, then use those coins to buy power-ups or extra health hearts.
