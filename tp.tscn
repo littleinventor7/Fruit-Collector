@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://daviacyc8swi0"]
+[gd_scene format=3 uid="uid://daviacyc8swi0"]
 
 [ext_resource type="Texture2D" uid="uid://ctasknvt6n3p4" path="res://spritesheet-tiles-default.png" id="1_mn331"]
 [ext_resource type="Script" uid="uid://cr4t30q5rgqib" path="res://tp.gd" id="1_qruqo"]
@@ -17,43 +17,43 @@ bg_color = Color(0.52156866, 0.5176471, 0.5176471, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_84akd"]
 font_size = 10
 
-[node name="TP" type="Area2D"]
+[node name="TP" type="Area2D" unique_id=1655390536]
 script = ExtResource("1_qruqo")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=1111320612]
 position = Vector2(-2, 0)
 scale = Vector2(1.02, 1.02)
 polygon = PackedVector2Array(-32, 32, -32, -67, -31, -73, -29, -78, -26, -83, -23, -87, -19, -90, -15, -93, -10, -95, -8, -96, 6, -96, 11, -94, 15, -92, 20, -89, 23, -86, 26, -83, 30, -77, 32, -71, 32, -66, 32, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1461784965]
 texture = ExtResource("1_mn331")
 region_enabled = true
 region_rect = Rect2(960, 64, 64, 64)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D" unique_id=1301280470]
 position = Vector2(0, -64)
 texture = ExtResource("1_mn331")
 region_enabled = true
 region_rect = Rect2(960, 0, 64, 64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1333869149]
 position = Vector2(0, -22)
 shape = SubResource("CapsuleShape2D_mn331")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=216323667]
 disable_mode = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=842961016]
 polygon = PackedVector2Array(-32, 32, -32, -67, -31, -73, -29, -78, -26, -83, -23, -87, -19, -90, -15, -93, -10, -95, -8, -96, 6, -96, 11, -94, 15, -92, 20, -89, 23, -86, 26, -83, 30, -77, 32, -71, 32, -66, 32, 32)
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1967734769]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="Control" unique_id=64649598]
 layout_mode = 0
 offset_left = -16.0
 offset_top = -190.0
@@ -61,7 +61,7 @@ offset_right = 99.0
 offset_bottom = -120.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdr50")
 
-[node name="Panel2" type="Panel" parent="Control"]
+[node name="Panel2" type="Panel" parent="Control" unique_id=813660345]
 layout_mode = 0
 offset_left = 29.0
 offset_top = -122.0
@@ -69,12 +69,12 @@ offset_right = 39.0
 offset_bottom = -112.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5qenf")
 
-[node name="Message" type="Sprite2D" parent="Control"]
+[node name="Message" type="Sprite2D" parent="Control" unique_id=438413882]
 position = Vector2(31, -138)
 scale = Vector2(0.8, 0.6)
 texture = ExtResource("3_sdr50")
 
-[node name="number" type="Label" parent="Control"]
+[node name="number" type="Label" parent="Control" unique_id=33800064]
 layout_mode = 0
 offset_left = 10.0
 offset_top = -166.0
@@ -83,7 +83,7 @@ offset_bottom = -117.0
 text = "0
 "
 
-[node name="Label2" type="Label" parent="Control"]
+[node name="Label2" type="Label" parent="Control" unique_id=152086590]
 layout_mode = 0
 offset_left = 38.0
 offset_top = -171.0
