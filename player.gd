@@ -30,29 +30,30 @@ func _ready() -> void:
 	else :
 		health = 3 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("magenting")and Global.num_magnets >0:
+	if Input.is_action_just_pressed("magenting")and Global.num_magnets >0:
 		if $UI/Shop_UI.visible == false and $UI/Basket_UI.visible == false:
 			if $UI/win.visible == false and $UI/dieing.visible == false:
-				Global.is_magenting =true
-				Global.num_magnets -= 1
-				print("gtt")
-		await get_tree().create_timer(10).timeout
-		Global.is_magenting = false
-	if Input.is_action_pressed("sheild")and Global.num_sheild >0:
+				if not Global.is_magenting:
+					activate_magnet()
+	if Input.is_action_just_pressed("sheild")and Global.num_sheild >0:
 		if $UI/Shop_UI.visible == false and $UI/Basket_UI.visible == false:
 			if $UI/win.visible == false and $UI/dieing.visible == false:
-				$Shield_Area.visible =true
-				$Shield_Area/CollisionShape2D.disabled = false
-				Global.num_sheild -= 1
-				print("gtt") 
-		await get_tree().create_timer(40).timeout
-		$Shield_Area.visible = false
-		$Shield_Area/CollisionShape2D.disabled = true
+				if not Global.is_sheild :
+					activate_shield()
+	if Input.is_action_just_pressed("health")and Global.num_health >0:
+		print("ppplkoo")
+		if $UI/Shop_UI.visible == false and $UI/Basket_UI.visible == false:
+			if $UI/win.visible == false and $UI/dieing.visible == false:
+				print("ikhh")
+				if Global.health < 3:
+					print("bravo")
+					Global.health +=1
+					Global.num_health -= 1
 	Global.p_x = player.position.x
 	Global.p_y = player.position.y
 	if Global.level == 18:
 		winn()
-	Global.health = health
+	health = Global.health 
 	match health:
 		3:
 			healthsprite.frame = 0
@@ -117,32 +118,33 @@ func move():
 		pass
 		
 func damage():
+	if $Shield_Area.visible == false:
+		isdamage = 1
+		var dir
+		animation.play("damage")
+		#damage_sound.play()
+		sprite.modulate = Color.RED
+		velocity.y -= 200
+		if sprite.flip_h == true :
+			dir = -1
+			pass
+		else :
+			dir = 1
 	
-	isdamage = 1
-	var dir
-	animation.play("damage")
-	#damage_sound.play()
-	sprite.modulate = Color.RED
-	velocity.y -= 200
-	if sprite.flip_h == true :
-		dir = -1
-		pass
-	else :
-		dir = 1
+		velocity.x = -200 * dir
+		await get_tree().create_timer(0.25).timeout
+		sprite.modulate = Color.WHITE
 	
-	velocity.x = -200 * dir
-	await get_tree().create_timer(0.25).timeout
-	sprite.modulate = Color.WHITE
+		Global.health -= 1
 	
-	health -= 1
+		if health == 0 :
+			pass
+		isdamage = 0
 	
-	if health == 0 :
-		pass
-	isdamage = 0
 	pass
 func fall():
 	#get_tree().reload_current_scene()
-	health -= 1
+	Global.health -= 1
 	player.position.x = xpositon
 	player.position.y = ypositon
 	
@@ -175,12 +177,17 @@ func _on_magnetic_area_area_entered(area: Area2D) -> void:
 
 func _on_shield_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") :
+		body.d *= -1
+	elif body.is_in_group("enemy_attack") :
 		body.queue_free()
 	pass # Replace with function body.
 
 
 func _on_shield_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy") :
+		area.d *= -1
+	elif "enemy_attack" in area and not area.is_in_group("redslim"):
+		print(area)
 		area.queue_free()
 	pass # Replace with function body.
 
@@ -189,3 +196,23 @@ func _on_magnetic_area_area_exited(area: Area2D) -> void:
 	if "is_pulled" in area:
 		area.is_pulled = false
 	pass # Replace with function body.
+
+func activate_magnet():
+	Global.is_magenting = true
+	Global.num_magnets -= 1
+	print("المغناطيس بدأ!")
+	
+	# انتظر 10 ثواني مرة واحدة فقط
+	await get_tree().create_timer(10.0).timeout
+	
+	Global.is_magenting = false
+	print("المغناطيس انتهى!")
+func activate_shield():
+	$Shield_Area.visible = true
+	$Shield_Area/CollisionShape2D.disabled = false
+	Global.num_sheild -= 1
+	
+	await get_tree().create_timer(40.0).timeout
+	
+	$Shield_Area.visible = false
+	$Shield_Area/CollisionShape2D.disabled = true

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dyw7j012j5yye"]
+[gd_resource type="TileSet" format=3 uid="uid://dyw7j012j5yye"]
 
 [ext_resource type="Texture2D" uid="uid://ctasknvt6n3p4" path="res://spritesheet-tiles-default.png" id="1_i7yqy"]
 
@@ -276,7 +276,7 @@ texture_region_size = Vector2i(64, 64)
 5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0
-7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -11.152077, -32, -9.240292, -32, 32, -23.707905, 32, -4.515793, 32, 12.982899, 24.272377, 27.094746, 16.934212, 32, 3.9513168, 32, -19.192112, 32, -28.223694, 23.260044, -28.358137, -32, -28.039505)
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -11.152077, -32, -9.240292, -32, 32, -23.707905, 32, -4.515793, 32, 12.982899, 24.272377, 27.094746, 16.934212, 32, 3.9513168, 32, -19.192112, 32, -28.223694, 23.768867, -32, -32, -32)
 8:4/0 = 0
 9:4/0 = 0
 10:4/0 = 0
@@ -324,7 +324,7 @@ texture_region_size = Vector2i(64, 64)
 5:5/0 = 0
 6:5/0 = 0
 7:5/0 = 0
-7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -9.031582, 32, -28.039507, -22.304153, -27.720875, -32, -25.401325, -32, -20.885532, -32, 1.1289482, -17.498692, 22.578957, 8.467106, 32, 32, 32)
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -9.031582, 32, -32, -21.036812, -32, -32, -25.401325, -32, -20.885532, -32, 1.1289482, -17.498692, 22.578957, 8.467106, 32, 32, 32)
 8:5/0 = 0
 9:5/0 = 0
 10:5/0 = 0
