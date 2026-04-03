@@ -1,152 +1,75 @@
-<a id="readme-top"></a>
+# 🍎 Fruit Collector
 
-<!-- SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+> A browser-based HTML5 game where you collect fruit, sell them for coins, and upgrade your abilities to survive!
 
-<!-- HEADER -->
-<br />
-<div align="center">
-    <a href="https://github.com/BudzioT/Godot_Super-Wakatime">
-        <img src="https://cloud-bo1ln2br1-hack-club-bot.vercel.app/0godotwaka22.png"  alt="Godot Wakatime"/>
-    </a>
-    <h3 align="center"> Godot Super Wakatime </h3>
-    <p align="center">
-        Tool to measure time spent in loved by many people game engine - Godot
-        <br />
-        Officially approved to use in events created by Hack Club
-        <br />
-        <br />
-        <a href="https://godotengine.org/asset-library/asset/3484">Get from Asset Lib</a>
-        ·
-        <a href="https://youtu.be/rqAc-YdVXyM">View Demo</a>
-        ·
-        <a href="https://github.com/BudzioT/Godot_Super-Wakatime/issues/new">Report Bug / Request Feature</a>
-    </p>
-</div>
+---
 
-<!-- CONTENTS -->
-<details>
-    <summary>Table of Contents</summary>
-    <ol>
-        <li>
-            <a href="#about">About The Project</a>
-            <ul>
-                <li><a href="#built-with">Built Using</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#getting-started">Getting Started</a>
-            <ul>
-                <li><a href="#installation">Installation</a></li>
-            </ul>
-        </li>
-        <li><a href="#usage">Usage</a></li>
-        <li><a href="#license">License</a></li>
-    </ol>
-</details>
+## 📖 Game Overview
 
+**Fruit Collector** is an action-packed collecting game where players control a cute alien character to gather falling fruits. The game features a shop system where players can sell collected fruits for coins and purchase power-ups or extra health hearts to aid their journey.
 
-<!-- ABOUT -->
-## About The Project
-<br />
+---
 
-[![Product Screenshot][product-screenshot]](https://waka.hackclub.com)
+## 🎮 How to Play
 
-This tool can successfully measure time spent building your games or apps in Godot.
-<br />
-Here's why:
-* It differentiates between switching a scene and script
-* It counts key presses as coding and mouse clicks as building scene
-* Changing scene structure results in a heartbeat sent
-* It correctly detects OS, machine name, language, editor, files
-* It can detect your cursor line and position
-* Time is split between: Building, Coding, Testing
-* In the future it will also detect testing your projects
+### Controls
+| Key | Action |
+|-----|--------|
+| ⬅️ Left Arrow | Move left |
+| ➡️ Right Arrow | Move right |
+| ⬆️ Up Arrow | Move up |
+| ⬇️ Down Arrow | Move down |
 
-It works on both Linux and Windows, it wasn't tested on macOS yet
-<br />
-You can also see your time spent in the editor itself:
-[![Time in editor][time-screenshot]]
+### Objective
+Collect as many fruits as possible while avoiding enemies. Sell your collected fruits at the shop to earn coins, then use those coins to buy power-ups or extra health hearts.
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+---
 
+## 🍏 Game Mechanics
 
-### Built Using
-I used the Ouch! CLI tool for decompression of files <br />
-This project was built using one simple, yet powerful language.<br />
-It required a lot of workarounds, but it was a pleasure to use it
-* [![GDScript][Godot]][Godot-url]
-* [![Ouch!][Ouch-shield]][Ouch-url]
+### Core Gameplay
+- **Collect Fruit**: Gather falling fruits to fill your inventory
+- **Sell Fruit**: Visit the shop to exchange fruits for coins
+- **Buy Upgrades**: Spend coins on power-ups or extra health
+- **Survive**: Avoid enemies and obstacles
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+### ⚠️ Important Note
+> **The game does NOT pause when you're in the shop!** Make sure to stand in a safe spot before buying or selling items. Enemies can still hit you while you're browsing the shop menu.
 
-<!-- GETTING STARTED -->
-## Getting Started
-How to install and use this software? It's easy!
+---
 
-### Installation
-You can either download it from the [Godot Asset Library](https://godotengine.org/asset-library/asset/3484).
-<br />Or you can manually install it, here's how to do it!
-1. Clone the repository
-    ```sh
-    git clone https://github.com/BudzioT/Godot_Super-Wakatime.git
-    ```
-2. Go into your project
-3. Insert the entire `./addons` folder into your project `res://` directory
+## 🛒 Shop System
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+### Available Items
 
-<!-- USAGE -->
-## Usage
-Don't know how to use this plugin? Here are the steps:
-1. Turn on the plugin in your plugins. In your `Project -> Project Settings -> Plugins -> `Click the `Enable` checkbox near this plugin
-2. If prompted for API key, provide it from Wakatime website
-3. if there is an issue with it, please manually create `~/.wakatime.cfg` file with these contents:
-    ```sh
-    [settings]
-    api_key=xxxx
-    ```
-    Where xxxx is your api key
-<br /><br />
-If you are coming from Hack Club use this:
-    ```sh
-    [settings]
-    api_url = https://hackatime.hackclub.com/api/hackatime/v1
-    api_key=xxxx
-    ```
-4. Wakatime CLI should have been installed automatically along with Ouch! Decompression library
-5. Work on your project! You should see your results on either Wakatime or Hackatime!
-6. You can also see your time at the bottom panel
+| Item | Description | Cost |
+|------|-------------|------|
+| 🧲 **Magnet** | Attracts nearby fruits automatically | 10 coins |
+| 🛡️ **Shield** | Protects from one enemy hit | 15 coins |
+| ❤️ **Extra Heart** | Adds one permanent health heart | 20 coins |
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+---
 
-<!-- LICENSE -->
-## License
+## 🎯 Tips & Strategies
 
-Distributed under the MIT License. See `LICENSE` for more information.
+1. **Stay Mobile**: Keep moving to avoid getting cornered by enemies
+2. **Plan Your Shop Visits**: Find a safe corner before opening the shop
+3. **Prioritize Upgrades**: Buy Extra Hearts first for better survivability
+4. **Combo Collection**: Try to collect fruits in quick succession for bonus points
+5. **Save for Power-ups**: Don't spend all coins on hearts; power-ups can save you in tough situations
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+---
 
+## 📝 Credits
 
-<!-- URLS -->
-[contributors-shield]: https://img.shields.io/github/contributors/budziot/Godot_Super-Wakatime?style=for-the-badge
-[contributors-url]: https://github.com/BudzioT/Godot_Super-Wakatime/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/budziot/Godot_Super-Wakatime?style=for-the-badge
-[forks-url]: https://github.com/BudzioT/Godot_Super-Wakatime/forks
-[stars-shield]: https://img.shields.io/github/stars/budziot/Godot_Super-Wakatime?style=for-the-badge
-[stars-url]: https://github.com/BudzioT/Godot_Super-Wakatime/stargazers
-[issues-shield]: https://img.shields.io/github/issues/budziot/Godot_Super-Wakatime?style=for-the-badge
-[issues-url]: https://github.com/BudzioT/Godot_Super-Wakatime/issues
-[license-shield]: https://img.shields.io/github/license/budziot/Godot_Super-Wakatime?style=for-the-badge
-[license-url]: https://github.com/BudzioT/Godot_Super-Wakatime/blob/master/addons/godot_super-wakatime/LICENSE
-[product-screenshot]: https://cloud-j4wibbzz7-hack-club-bot.vercel.app/0image.png
-[product-logo]: https://cloud-j4wibbzz7-hack-club-bot.vercel.app/2godotwaka2.png
-[Godot]: https://img.shields.io/badge/Godot%20Engine-478CBF?logo=godotengine&logoColor=fff&style=flat
-[Godot-url]: https://godotengine.org/
-[Ouch-shield]: https://img.shields.io/badge/Ouch!-tool-blue?label=Ouch!
-[Ouch-url]: https://github.com/ouch-org/ouch
-[time-screenshot]: https://cloud-l88kldf50-hack-club-bot.vercel.app/0image.png
+**Developer**: littleinventor7  
+**Platform**: itch.io  
+---
+
+## 🔗 Links
+
+- [Play on itch.io](https://littleinventor7.itch.io/fruit-collector)
+
+---
+
+*Good luck collecting those fruits! 🍎🍊🍇*
