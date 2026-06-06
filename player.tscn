@@ -32,6 +32,11 @@
 [ext_resource type="Script" uid="uid://dwoleo8sm3o4x" path="res://sell_fig.gd" id="24_j5n4i"]
 [ext_resource type="Script" uid="uid://8p6l2wqvl0sr" path="res://sell_prickly_pear.gd" id="25_j5n4i"]
 [ext_resource type="Script" uid="uid://jcccodsi06r5" path="res://sell_dates.gd" id="26_634y6"]
+[ext_resource type="Script" uid="uid://v36ruviwgppw" path="res://buy_green.gd" id="28_hiqhm"]
+[ext_resource type="Script" uid="uid://ce7xcqsl76kg4" path="res://buy_yellow.gd" id="29_tkwlq"]
+[ext_resource type="Script" uid="uid://b7hxfav5t8bpn" path="res://buy_purple.gd" id="30_hl5qd"]
+[ext_resource type="Script" uid="uid://c2br4cl41tuil" path="res://buy_pink.gd" id="31_ek41f"]
+[ext_resource type="Script" uid="uid://ci0icpmqjtuny" path="res://buy_brown.gd" id="32_khis8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 35.0
@@ -75,6 +80,66 @@ tracks/0/keys = {
 "values": [Rect2(384, 896, 128, 128)]
 }
 
+[sub_resource type="Animation" id="Animation_khis8"]
+resource_name = "damage_brown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(640, 0, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_b88wv"]
+resource_name = "damage_pink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(640, 512, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_pgbbb"]
+resource_name = "damage_purple"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(128, 640, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_331ug"]
+resource_name = "damage_yellow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 512, 128, 128)]
+}
+
 [sub_resource type="Animation" id="Animation_sweqy"]
 resource_name = "jump"
 tracks/0/type = "value"
@@ -90,6 +155,66 @@ tracks/0/keys = {
 "values": [Rect2(384, 640, 128, 128), Rect2(384, 768, 128, 128)]
 }
 
+[sub_resource type="Animation" id="Animation_ny14h"]
+resource_name = "jump_brown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(512, 768, 128, 128), Rect2(512, 896, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_ibah8"]
+resource_name = "jump_pink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(256, 512, 128, 128), Rect2(256, 640, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_3iwfv"]
+resource_name = "jump_purple"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(128, 384, 128, 128), Rect2(128, 512, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_qwsg1"]
+resource_name = "jump_yellow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 256, 128, 128), Rect2(0, 384, 128, 128)]
+}
+
 [sub_resource type="Animation" id="Animation_onrkg"]
 resource_name = "move"
 length = 0.3
@@ -101,10 +226,78 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
+"times": PackedFloat32Array(0, 0.1333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Rect2(384, 512, 128, 128), Rect2(384, 384, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_1xqrm"]
+resource_name = "move_brown"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(512, 640, 128, 128), Rect2(512, 512, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_bfour"]
+resource_name = "move_pink"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(256, 384, 128, 128), Rect2(256, 256, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_8gr2b"]
+resource_name = "move_purple"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(128, 256, 128, 128), Rect2(128, 128, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_vl8ci"]
+resource_name = "move_yellow"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(0, 128, 128, 128), Rect2(0, 0, 128, 128)]
 }
 
 [sub_resource type="Animation" id="Animation_hqtel"]
@@ -122,14 +315,96 @@ tracks/0/keys = {
 "values": [Rect2(512, 0, 128, 128)]
 }
 
+[sub_resource type="Animation" id="Animation_ieltc"]
+resource_name = "stand_brown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(640, 128, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_fddr8"]
+resource_name = "stand_pink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(256, 896, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_oybyf"]
+resource_name = "stand_purple"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(128, 768, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_ajfva"]
+resource_name = "stand_yellow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 640, 128, 128)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hqtel"]
 _data = {
 &"RESET": SubResource("Animation_i3pqv"),
 &"damage": SubResource("Animation_2hs0m"),
+&"damage_brown": SubResource("Animation_khis8"),
+&"damage_pink": SubResource("Animation_b88wv"),
+&"damage_purple": SubResource("Animation_pgbbb"),
+&"damage_yellow": SubResource("Animation_331ug"),
 &"jump": SubResource("Animation_sweqy"),
+&"jump_brown": SubResource("Animation_ny14h"),
+&"jump_pink": SubResource("Animation_ibah8"),
+&"jump_purple": SubResource("Animation_3iwfv"),
+&"jump_yellow": SubResource("Animation_qwsg1"),
 &"move": SubResource("Animation_onrkg"),
-&"stand": SubResource("Animation_hqtel")
+&"move_brown": SubResource("Animation_1xqrm"),
+&"move_pink": SubResource("Animation_bfour"),
+&"move_purple": SubResource("Animation_8gr2b"),
+&"move_yellow": SubResource("Animation_vl8ci"),
+&"stand": SubResource("Animation_hqtel"),
+&"stand_brown": SubResource("Animation_ieltc"),
+&"stand_pink": SubResource("Animation_fddr8"),
+&"stand_purple": SubResource("Animation_oybyf"),
+&"stand_yellow": SubResource("Animation_ajfva")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1c27"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
+radius = 106.66675
+height = 960.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_qtqh7"]
 font_size = 50
@@ -5719,12 +5994,6 @@ sources/0 = SubResource("TileSetAtlasSource_1jxqw")
 [sub_resource type="CircleShape2D" id="CircleShape2D_urp6f"]
 radius = 22.022715
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1c27"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
-radius = 106.66675
-height = 960.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_q13i1"]
 font_size = 13
 font_color = Color(0, 0, 0, 1)
@@ -5791,6 +6060,39 @@ shape = SubResource("CircleShape2D_1jxqw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=140276731]
 libraries/ = SubResource("AnimationLibrary_hqtel")
+
+[node name="sell_apple" type="Area2D" parent="AnimationPlayer" unique_id=1542259432]
+position = Vector2(-20, -166.66492)
+script = ExtResource("18_7hik5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimationPlayer/sell_apple" unique_id=69464820]
+position = Vector2(86.66638, 740.00024)
+scale = Vector2(5, 5)
+texture = ExtResource("7_1jxqw")
+region_enabled = true
+region_rect = Rect2(1, 128, 99, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimationPlayer/sell_apple/Sprite2D2" unique_id=1710335996]
+position = Vector2(98.66669, 1.013279e-05)
+texture = ExtResource("7_1jxqw")
+region_enabled = true
+region_rect = Rect2(156, 128, 100, 48)
+
+[node name="Label" type="Label" parent="AnimationPlayer/sell_apple/Sprite2D2" unique_id=1310928305]
+offset_left = 24.000042
+offset_top = -22.666729
+offset_right = 79.000046
+offset_bottom = 19.333271
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
+text = "Sell"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimationPlayer/sell_apple" unique_id=1931405204]
+position = Vector2(340, 740)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_op7ga")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=263866699]
 
@@ -8575,6 +8877,7 @@ position = Vector2(482, -258)
 shape = SubResource("CircleShape2D_urp6f")
 
 [node name="Shop_UI2" type="CanvasLayer" parent="UI" unique_id=689647770]
+visible = false
 
 [node name="sellorbuy" type="TileMap" parent="UI/Shop_UI2" unique_id=2011577850]
 visible = false
@@ -10230,12 +10533,12 @@ region_enabled = true
 region_rect = Rect2(-2, 0, 258, 64)
 
 [node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Green/Sprite2D" unique_id=1672212385]
-offset_left = -33.333313
+offset_left = -37.58864
 offset_top = -15.999992
-offset_right = 58.666687
+offset_right = 54.41136
 offset_bottom = 95.00001
 theme_override_font_sizes/font_size = 25
-text = "Apple
+text = "Green
 
 "
 
@@ -10244,7 +10547,7 @@ position = Vector2(300.00037, -120.00012)
 scale = Vector2(5, 5)
 texture = ExtResource("2_i3pqv")
 region_enabled = true
-region_rect = Rect2(256, 896, 128, 128)
+region_rect = Rect2(512, 0, 128, 128)
 
 [node name="Label3" type="Label" parent="UI/Shop_UI2/TileMap4/Green" unique_id=758063698]
 offset_left = -120.0
@@ -10262,57 +10565,57 @@ texture = ExtResource("16_5tmop")
 region_enabled = true
 region_rect = Rect2(968, 520, 48, 48)
 
-[node name="sell_apple2" type="Area2D" parent="UI/Shop_UI2/TileMap4/Green" unique_id=1196388462]
+[node name="Select_Green" type="Area2D" parent="UI/Shop_UI2/TileMap4/Green" unique_id=1196388462]
 position = Vector2(-20, 180.00305)
 script = ExtResource("18_7hik5")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/sell_apple2" unique_id=1838722361]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/Select_Green" unique_id=1838722361]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/sell_apple2/Sprite2D2" unique_id=993647070]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/Select_Green/Sprite2D2" unique_id=993647070]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Green/sell_apple2/Sprite2D2" unique_id=1568001838]
-offset_left = 24.000042
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Green/Select_Green/Sprite2D2" unique_id=1568001838]
+offset_left = 13.3334465
 offset_top = -22.666729
-offset_right = 79.000046
+offset_right = 93.33345
 offset_bottom = 19.333271
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell"
+text = "Select"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Green/sell_apple2" unique_id=768779472]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Green/Select_Green" unique_id=768779472]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
 
-[node name="sell_apple" type="Area2D" parent="UI/Shop_UI2/TileMap4/Green" unique_id=638436229]
+[node name="Buy_Green" type="Area2D" parent="UI/Shop_UI2/TileMap4/Green" unique_id=638436229]
 position = Vector2(-20, -166.66492)
-script = ExtResource("18_7hik5")
+script = ExtResource("28_hiqhm")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/sell_apple" unique_id=467953303]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/Buy_Green" unique_id=467953303]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/sell_apple/Sprite2D2" unique_id=203270010]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Green/Buy_Green/Sprite2D2" unique_id=203270010]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Green/sell_apple/Sprite2D2" unique_id=240466370]
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Green/Buy_Green/Sprite2D2" unique_id=240466370]
 offset_left = 24.000042
 offset_top = -22.666729
 offset_right = 79.000046
@@ -10323,7 +10626,7 @@ theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
 text = "Buy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Green/sell_apple" unique_id=1146333916]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Green/Buy_Green" unique_id=1146333916]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
@@ -10341,12 +10644,12 @@ region_enabled = true
 region_rect = Rect2(-2, 0, 258, 64)
 
 [node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Yellow/Sprite2D" unique_id=1123663582]
-offset_left = -45.333313
+offset_left = -42.49646
 offset_top = -15.999992
-offset_right = 46.666687
+offset_right = 49.50354
 offset_bottom = 57.000008
 theme_override_font_sizes/font_size = 25
-text = "Banana"
+text = "Yelllow"
 
 [node name="Label3" type="Label" parent="UI/Shop_UI2/TileMap4/Yellow" unique_id=1054430838]
 offset_left = -120.0
@@ -10371,24 +10674,24 @@ texture = ExtResource("2_i3pqv")
 region_enabled = true
 region_rect = Rect2(0, 640, 128, 128)
 
-[node name="sell_banana" type="Area2D" parent="UI/Shop_UI2/TileMap4/Yellow" unique_id=1646651676]
+[node name="Buy_Yellow" type="Area2D" parent="UI/Shop_UI2/TileMap4/Yellow" unique_id=1646651676]
 position = Vector2(-20, -186.66626)
-script = ExtResource("19_qtqh7")
+script = ExtResource("29_tkwlq")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana" unique_id=574063372]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/Buy_Yellow" unique_id=574063372]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana/Sprite2D2" unique_id=1689869375]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/Buy_Yellow/Sprite2D2" unique_id=1689869375]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana/Sprite2D2" unique_id=452685547]
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Yellow/Buy_Yellow/Sprite2D2" unique_id=452685547]
 offset_left = 24.000042
 offset_top = -22.666729
 offset_right = 79.000046
@@ -10397,44 +10700,43 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
-"
+text = "Buy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana" unique_id=1735669541]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Yellow/Buy_Yellow" unique_id=1735669541]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
 
-[node name="sell_banana2" type="Area2D" parent="UI/Shop_UI2/TileMap4/Yellow" unique_id=1545297989]
+[node name="Select_Yellow" type="Area2D" parent="UI/Shop_UI2/TileMap4/Yellow" unique_id=1545297989]
 position = Vector2(-20, 180.00049)
 script = ExtResource("19_qtqh7")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana2" unique_id=1695830558]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/Select_Yellow" unique_id=1695830558]
 position = Vector2(86.66638, 746.66724)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana2/Sprite2D2" unique_id=1020359329]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Yellow/Select_Yellow/Sprite2D2" unique_id=1020359329]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana2/Sprite2D2" unique_id=1382699279]
-offset_left = 24.000042
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Yellow/Select_Yellow/Sprite2D2" unique_id=1382699279]
+offset_left = 12.000042
 offset_top = -22.666729
-offset_right = 79.000046
-offset_bottom = 19.333271
+offset_right = 92.000046
+offset_bottom = 58.33327
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
+text = "Select
 "
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Yellow/sell_banana2" unique_id=1901588131]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Yellow/Select_Yellow" unique_id=1901588131]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
@@ -10452,12 +10754,12 @@ region_enabled = true
 region_rect = Rect2(-2, 0, 258, 64)
 
 [node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Purple/Sprite2D" unique_id=814377606]
-offset_left = -45.333313
+offset_left = -35.404236
 offset_top = -15.999992
-offset_right = 46.666687
+offset_right = 56.595764
 offset_bottom = 57.000008
 theme_override_font_sizes/font_size = 25
-text = "Grapes"
+text = "Purple"
 
 [node name="Label3" type="Label" parent="UI/Shop_UI2/TileMap4/Purple" unique_id=878262156]
 offset_left = -120.0
@@ -10482,24 +10784,24 @@ texture = ExtResource("2_i3pqv")
 region_enabled = true
 region_rect = Rect2(128, 768, 128, 128)
 
-[node name="sell_grapes" type="Area2D" parent="UI/Shop_UI2/TileMap4/Purple" unique_id=1268714629]
+[node name="Buy_Purple" type="Area2D" parent="UI/Shop_UI2/TileMap4/Purple" unique_id=1268714629]
 position = Vector2(-20, -206.66626)
-script = ExtResource("20_2wuci")
+script = ExtResource("30_hl5qd")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes" unique_id=1325431713]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/Buy_Purple" unique_id=1325431713]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes/Sprite2D2" unique_id=213744622]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/Buy_Purple/Sprite2D2" unique_id=213744622]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes/Sprite2D2" unique_id=1553766610]
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Purple/Buy_Purple/Sprite2D2" unique_id=1553766610]
 offset_left = 24.000042
 offset_top = -22.666729
 offset_right = 79.000046
@@ -10508,44 +10810,44 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
+text = "Buy
 "
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes" unique_id=1765380499]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Purple/Buy_Purple" unique_id=1765380499]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
 
-[node name="sell_grapes2" type="Area2D" parent="UI/Shop_UI2/TileMap4/Purple" unique_id=1737583719]
+[node name="Select_Purple" type="Area2D" parent="UI/Shop_UI2/TileMap4/Purple" unique_id=1737583719]
 position = Vector2(-20, 193.33362)
 script = ExtResource("20_2wuci")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes2" unique_id=1882488707]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/Select_Purple" unique_id=1882488707]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes2/Sprite2D2" unique_id=1923949796]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Purple/Select_Purple/Sprite2D2" unique_id=1923949796]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes2/Sprite2D2" unique_id=249278293]
-offset_left = 24.000042
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Purple/Select_Purple/Sprite2D2" unique_id=249278293]
+offset_left = 13.333355
 offset_top = -22.666729
-offset_right = 79.000046
-offset_bottom = 19.333271
+offset_right = 93.33336
+offset_bottom = 58.33327
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
+text = "Select
 "
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Purple/sell_grapes2" unique_id=1881325750]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Purple/Select_Purple" unique_id=1881325750]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
@@ -10563,13 +10865,12 @@ region_enabled = true
 region_rect = Rect2(-2, 0, 258, 64)
 
 [node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Pink/Sprite2D" unique_id=298710038]
-offset_left = -45.333313
+offset_left = -25.475159
 offset_top = -15.999992
-offset_right = 46.666687
+offset_right = 66.52484
 offset_bottom = 57.000008
 theme_override_font_sizes/font_size = 25
-text = "Orange
-"
+text = "Pink"
 
 [node name="Label3" type="Label" parent="UI/Shop_UI2/TileMap4/Pink" unique_id=233185412]
 offset_left = -120.0
@@ -10592,26 +10893,26 @@ position = Vector2(293.3335, -159.99976)
 scale = Vector2(5, 5)
 texture = ExtResource("2_i3pqv")
 region_enabled = true
-region_rect = Rect2(640, 128, 128, 128)
+region_rect = Rect2(256, 896, 128, 128)
 
-[node name="sell_orange" type="Area2D" parent="UI/Shop_UI2/TileMap4/Pink" unique_id=349421029]
+[node name="Buy_Pink" type="Area2D" parent="UI/Shop_UI2/TileMap4/Pink" unique_id=349421029]
 position = Vector2(-20, -206.66626)
-script = ExtResource("21_iruf7")
+script = ExtResource("31_ek41f")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange" unique_id=805437752]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/Buy_Pink" unique_id=805437752]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange/Sprite2D2" unique_id=622893671]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/Buy_Pink/Sprite2D2" unique_id=622893671]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange/Sprite2D2" unique_id=131784097]
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Pink/Buy_Pink/Sprite2D2" unique_id=131784097]
 offset_left = 24.000042
 offset_top = -22.666729
 offset_right = 79.000046
@@ -10620,44 +10921,43 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
-"
+text = "Buy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange" unique_id=1358818931]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Pink/Buy_Pink" unique_id=1358818931]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
 
-[node name="sell_orange2" type="Area2D" parent="UI/Shop_UI2/TileMap4/Pink" unique_id=120456634]
+[node name="Select_Pink" type="Area2D" parent="UI/Shop_UI2/TileMap4/Pink" unique_id=120456634]
 position = Vector2(-20, 213.33362)
 script = ExtResource("21_iruf7")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange2" unique_id=1868539696]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/Select_Pink" unique_id=1868539696]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange2/Sprite2D2" unique_id=1801713612]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Pink/Select_Pink/Sprite2D2" unique_id=1801713612]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange2/Sprite2D2" unique_id=1366880939]
-offset_left = 24.000042
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Pink/Select_Pink/Sprite2D2" unique_id=1366880939]
+offset_left = 10.6674
 offset_top = -22.666729
-offset_right = 79.000046
-offset_bottom = 19.333271
+offset_right = 90.667404
+offset_bottom = 58.33327
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
+text = "Select
 "
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Pink/sell_orange2" unique_id=1008532593]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Pink/Select_Pink" unique_id=1008532593]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
@@ -10675,13 +10975,12 @@ region_enabled = true
 region_rect = Rect2(-2, 0, 258, 64)
 
 [node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Brown/Sprite2D" unique_id=1418816653]
-offset_left = -45.333313
+offset_left = -38.241028
 offset_top = -15.999992
-offset_right = 46.666687
+offset_right = 53.758972
 offset_bottom = 57.000008
 theme_override_font_sizes/font_size = 25
-text = "Orange
-"
+text = "Brown"
 
 [node name="Label3" type="Label" parent="UI/Shop_UI2/TileMap4/Brown" unique_id=1381684232]
 offset_left = -120.0
@@ -10706,24 +11005,24 @@ texture = ExtResource("2_i3pqv")
 region_enabled = true
 region_rect = Rect2(640, 128, 128, 128)
 
-[node name="sell_orange" type="Area2D" parent="UI/Shop_UI2/TileMap4/Brown" unique_id=1687294654]
+[node name="Buy_Brown" type="Area2D" parent="UI/Shop_UI2/TileMap4/Brown" unique_id=1687294654]
 position = Vector2(-20, -179.99963)
-script = ExtResource("21_iruf7")
+script = ExtResource("32_khis8")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange" unique_id=2065512710]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/Buy_Brown" unique_id=2065512710]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange/Sprite2D2" unique_id=411007199]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/Buy_Brown/Sprite2D2" unique_id=411007199]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange/Sprite2D2" unique_id=362113685]
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Brown/Buy_Brown/Sprite2D2" unique_id=362113685]
 offset_left = 24.000042
 offset_top = -22.666729
 offset_right = 79.000046
@@ -10732,44 +11031,43 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
-"
+text = "Buy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange" unique_id=1434737870]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Brown/Buy_Brown" unique_id=1434737870]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
 
-[node name="sell_orange2" type="Area2D" parent="UI/Shop_UI2/TileMap4/Brown" unique_id=1201862230]
+[node name="Select_Brown" type="Area2D" parent="UI/Shop_UI2/TileMap4/Brown" unique_id=1201862230]
 position = Vector2(-20, 220.00037)
 script = ExtResource("21_iruf7")
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange2" unique_id=69676364]
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/Select_Brown" unique_id=69676364]
 position = Vector2(86.66638, 740.00024)
 scale = Vector2(5, 5)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(1, 128, 99, 48)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange2/Sprite2D2" unique_id=62958443]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Shop_UI2/TileMap4/Brown/Select_Brown/Sprite2D2" unique_id=62958443]
 position = Vector2(98.66669, 1.013279e-05)
 texture = ExtResource("7_1jxqw")
 region_enabled = true
 region_rect = Rect2(156, 128, 100, 48)
 
-[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange2/Sprite2D2" unique_id=525263352]
-offset_left = 24.000042
+[node name="Label" type="Label" parent="UI/Shop_UI2/TileMap4/Brown/Select_Brown/Sprite2D2" unique_id=525263352]
+offset_left = 13.334026
 offset_top = -22.666729
-offset_right = 79.000046
-offset_bottom = 19.333271
+offset_right = 93.33403
+offset_bottom = 58.33327
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1c27")
-text = "Sell
+text = "Select
 "
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Brown/sell_orange2" unique_id=701268195]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Shop_UI2/TileMap4/Brown/Select_Brown" unique_id=701268195]
 position = Vector2(340, 740)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_op7ga")
