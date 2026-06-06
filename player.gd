@@ -2,6 +2,11 @@ extends CharacterBody2D
 var jumpcnt=1
 var health = Global.health
 var isdamage = 0
+var ani = ""
+var ani_move = ""
+var ani_stand = ""
+var ani_jump = ""
+var ani_damage = ""
 @export var xpositon :int
 @export var ypositon :int
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -24,12 +29,41 @@ var jumper = 0
 @onready var massagelabel: Label = $UI/massage/Label
 @onready var massage: CanvasLayer = $UI/massage
 func _ready() -> void:
+	Global.yellow_selected = 1
 	dieing.visible = false
 	if Global.health <=3:
 		health = Global.health
 	else :
 		health = 3 
 func _physics_process(delta: float) -> void:
+	if Global.green_selected == 1:
+		ani_move = "move"
+		ani_stand = "stand"
+		ani_jump = "jump"
+		ani_damage = "damage"
+	elif Global.yellow_selected == 1:
+		ani_move = "move_yellow"
+		ani_stand = "stand_yellow"
+		ani_jump = "jump_yellow"
+		ani_damage = "damage_yellow"
+	elif Global.pink_selected == 1:
+		ani_move = "move_pink"
+		ani_stand = "stand_pink"
+		ani_jump = "jump_pink"
+		ani_damage = "damage_pink"
+	elif Global.purple_selected == 1:
+		ani_move = "move_purple"
+		ani_stand = "stand_purple"
+		ani_jump = "jump_purple"
+		ani_damage = "damage_purple"
+	elif Global.brown_selected == 1:
+		ani_move = "move_brown"
+		ani_stand = "stand_brown"
+		ani_jump = "jump_brown"
+		ani_damage = "damage_brown"
+		
+	
+	
 	if Input.is_action_just_pressed("magenting")and Global.num_magnets >0:
 		if $UI/Shop_UI.visible == false and $UI/Basket_UI.visible == false:
 			if $UI/win.visible == false and $UI/dieing.visible == false:
@@ -83,7 +117,7 @@ func move():
 		sprite.flip_h = false
 		velocity.x = 300
 		if is_on_floor():
-			animation.play("move")
+			animation.play(ani_move)
 		pass    
 	elif Input.is_action_pressed("left") and isdamage == 0 :
 		#Golbal.p_x = sprite.position.x
@@ -91,20 +125,20 @@ func move():
 #		$Particles.emitting = true
 		velocity.x = -300
 		if is_on_floor():
-			animation.play("move")
+			animation.play(ani_move)
 		pass
 	else :
 		#$Particles.emitting = false
 		if is_on_floor() and isdamage == 0:
 			#Global.p_y = sprite.position.y
-			animation.play("stand")
+			animation.play(ani_stand)
 			velocity.x = 0
 	if Input.is_action_just_pressed("jump") and jumpcnt<2 :
 		#jumpsound.play()
 		jumpcnt+=1
 	#	$Particles.emitting = false
 		velocity.y -= 500
-		animation.play("jump")
+		animation.play(ani_jump)
 		pass
 	
 	if not is_on_floor() :
@@ -121,7 +155,7 @@ func damage():
 	if $Shield_Area.visible == false:
 		isdamage = 1
 		var dir
-		animation.play("damage")
+		animation.play(ani_damage)
 		#damage_sound.play()
 		sprite.modulate = Color.RED
 		velocity.y -= 200
