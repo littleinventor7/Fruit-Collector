@@ -29,7 +29,32 @@ var jumper = 0
 @onready var massagelabel: Label = $UI/massage/Label
 @onready var massage: CanvasLayer = $UI/massage
 func _ready() -> void:
-	Global.yellow_selected = 1
+	if Global.green_selected == 1:
+		ani_move = "move"
+		ani_stand = "stand"
+		ani_jump = "jump"
+		ani_damage = "damage"
+	elif Global.yellow_selected == 1:
+		ani_move = "move_yellow"
+		ani_stand = "stand_yellow"
+		ani_jump = "jump_yellow"
+		ani_damage = "damage_yellow"
+	elif Global.pink_selected == 1:
+		ani_move = "move_pink"
+		ani_stand = "stand_pink"
+		ani_jump = "jump_pink"
+		ani_damage = "damage_pink"
+	elif Global.purple_selected == 1:
+		ani_move = "move_purple"
+		ani_stand = "stand_purple"
+		ani_jump = "jump_purple"
+		ani_damage = "damage_purple"
+	elif Global.brown_selected == 1:
+		ani_move = "move_brown"
+		ani_stand = "stand_brown"
+		ani_jump = "jump_brown"
+		ani_damage = "damage_brown"
+	animation.play(ani_stand)
 	dieing.visible = false
 	if Global.health <=3:
 		health = Global.health
@@ -61,9 +86,6 @@ func _physics_process(delta: float) -> void:
 		ani_stand = "stand_brown"
 		ani_jump = "jump_brown"
 		ani_damage = "damage_brown"
-		
-	
-	
 	if Input.is_action_just_pressed("magenting")and Global.num_magnets >0:
 		if $UI/Shop_UI.visible == false and $UI/Basket_UI.visible == false:
 			if $UI/win.visible == false and $UI/dieing.visible == false:

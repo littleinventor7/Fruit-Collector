@@ -5,8 +5,9 @@ func _input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		# Check if it's the left button and if it was pressed
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed  :
-			Global.brown_selected = 1
-			Global.yellow_selected = 0
-			Global.green_selected = 0
-			Global.pink_selected = 0
-			Global.purple_selected = 0
+			if Global.chracter_brown == 1:
+				Global.brown_selected = 1
+				Global.yellow_selected = 0
+				Global.green_selected = 0
+				Global.pink_selected = 0
+				Global.purple_selected = 0
